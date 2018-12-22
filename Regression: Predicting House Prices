@@ -1,1 +1,9 @@
+1.	Regression:
+Y – Observation, Response or dependent variable
+X – Predictor, Covariate, feature or independent variable
 
+Data –  1. Training set
+	2. Test set
+•	RSS for training data set points is training error and test data is test error.
+•	As we increase model complexity or order, training error decreases. Whereas test error decreasing and increases as order increases.
+•	We split the data into train and test, we build the linear regression model on train, later evaluate and predict on the test.

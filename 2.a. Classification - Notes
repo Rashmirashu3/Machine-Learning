@@ -1,0 +1,34 @@
+2.	Classification:
+
+In Classification, the data is passed through a classifier model and then it is classified into classes or objects. Basically, it segregates the data into multiple categories, based on the features of the data. There are multiple tasks that can be achieved using various classifier models:
+a.	Sentiment classifier (Rating or reviews): Input: Sentences  Output: Predicted class (ex: positive or negative)
+A sentiment classifier tells if the statement (can be filtered to get statements of our interest) made is positive or negative. The average value of the result is obtained. We can even find the most positive and most negative reviews.
+b.	Multiclass classifier: Input: Text web pages  Output: More than 2 predicted classes
+c.	Spam filtering: Input: emails  Output: spam or not spam
+d.	Image Classification: Input: Image pixels  Output: Predicted object (ex: car, dog breed)
+e.	Medical Diagnosis: Input: Symptoms, x-rays  Output: disease occurred.
+
+
+There are various classifier models used for these tasks:
+Threshold Classifier: Counts the number of positive and negative words in a sentence and predicts the output to be the one with majority words. 
+But it has limitations: 
+1.	List of positive and negative words
+2.	Degree of sentiment. Great> good
+3.	Single words are not enough (Complex bigram models are used)
+Simple Linear Classifier: It uses training data to learn weightage for each word (addresses 1,2 limitation of threshold classifiers). It is called so because it is a weighted sum of input. 
+Ex: restaurant is good, food is good, and ambience is excellent, but service is bad.
+Y=Score(x)= 1.5*(2) +3*(1)-1*(1) =5	(>0 Positive)
+The decision boundary is the line Y-(1.5X1+3X2-1X3)=0. This dissects the cartesian of positive (x) & negative(y) into two regions. Region below is +ve and above is -ve.
+Classification error = # of mistakes/# of sentences= B+C/A+B+C+D
+Accuracy = # of correct/# of sentences = A+D/A+B+C+D
+Class imbalance: If a class has the most percentage in the data
+Types of mistakes a classifier makes:
+Confusion matrix:	
+True/predicted	Positive 	Negative
+Positive		A		B
+Negative		C		D
+
+•	For Single word classifiers, as the amount of data increases, the test error reduces, but it never becomes 0. Due to bias of the model. 
+•	For bigrams, with low data test error is higher than single word classifiers but as the amount of data increases, the error reduces, and bias is less than Single word classifiers bias. 
+•	Bias for bigrams < single word classifiers.
+•	Majority class accuracy: ratio of majority class / total lines in data

@@ -1,0 +1,50 @@
+3.	Clustering:
+Document retrieval: A case study in clustering and measuring similarity
+•	Groups of related articles: clusters
+In document retrieval, given an article, to find similar articles:
+•	measure similarity
+•	search over articles and retrieve next article
+Word count representation for measuring similarity
+Most popular model: bag of words model
+•	ignore order of words
+•	count # of instances of each word in vocabulary
+•	create a count vectors with number of instances for each word within the two documents. Now calculate the sum of product of counts for each position in the vector. That gives the similarity between these 2 docs.
+Limitations with the bag of words – word count vector model:
+•	Issues with the length of document: biases with lengthy documents
+Solution: norm the vector(sqrt(sum(i^2))), regardless of length, equal footing.
+•	Issues due to common words dominating rare words (of our importance)
+Solution: TF-IDF
+TF IDF: 
+Giving weight to rare words by upweighting rare words appearing infrequently in the corpus by adding weight based on its appearance in no of docs. 
+Emphasize rare words and IMPORTANT words.
+Important words: common locally & rare globally 
+Term Frequency and Inverse Document Frequency TF-IDF:
+IDF = log #docs/1+#docs using word.
+Product of TF and IDF is the count vector.
+Retrieval of similar documents:
+1 – nearest neighbor: 
+Input: Query article -> Output: most similar article
+In this model, similarity between the document of our interest and rest all documents in the corpus are compared using the above-mentioned similarity measures and the best similar document is chosen. 
+K – nearest neighbor: 
+Input: Query article -> Output: k similar articles
+Clustering documents:
+Discover clusters of related articles
+Multiclass classification: If the class of a document is labeled, then the unlabeled document needs to be classified. It comes under supervised learning
+If the labels are not provided, it is unsupervised learning. 
+Input: docs (word count) are vectors and plotted on axis -> Output: Cluster labels are labeled post facto.
+Cluster: Shape & center are the factors considered for clustering the docs. 
+To assign a new article check the shape of the cluster and center
+Another approach is to only look at distance from center
+Algorithm for clustering:
+K means algorithm: 
+0. Initialize cluster centers
+1. Assign observations to closest cluster centers Voronoi Tessellation and assign regions
+2. Revise cluster centers as mean of assigned observations
+3. Iterate the process and repeat 1 and 2 until convergence.
+Applications of Clustering:
+1.	Image search
+2.	Group patients by disease 
+3.	Product recommendation on Amazon
+4.	Structural search results
+5.	Discover similar neighborhoods – to estimate house prices, forecast violent crimes
+

@@ -1,0 +1,73 @@
+4.	Recommendation systems:
+ML to use history of your and other's purchases
+Where we see recommender systems in action
+•	YouTube, Netflix movies
+•	amazon products: include global and session interests e.g. last year buying newborn products
+•	Facebook friend recommendations
+•	drug target interactions: drug d has been studied for target. Can we discover new applications of d?
+Building a recommender system based on:
+
+1.	Popularity – rank by global popularity (no of shares) 
+Cons: no personal recommendation.
+
+2.	Classification model – Classification used to classify whether a person likes a product. It gives yes or no.
+
+Pros:
+Personalized: user, purchase history, product info can be features
+Context: based on time of shopping
+Other features: age, gender
+
+Cons: Not so informative about user or products bought.
+
+3.	Collaborative filtering:
+People who bought this also bought this note usually comes up.
+Co-occurrence matrix: ex. person buying diapers might also be interested in baby wipes because others did so. So, an i*j items matrix containing combinations of i*j items bought by no. of persons is created. It is symmetric across diagonal. 
+Cons:
+Effect of popular items- drowns effect of other effects and therefore we can recommend based on popularity (like model 1).
+Solution – 
+Co-occurrence matrix must be normalized using Jaccard Similarity: 
+•	Like TF-IDF
+•	(#i + #j purchased) / (#i OR #j purchased)
+Cons: 
+•	does not utilize context (e.g. time of day), user features (e.g. age), product features (e.g. baby vs electronics)
+•	Cold start problem: no history for a new product or user
+Solution – 
+To modify and consider the history, we can weight my purchased items to refine 
+e.g. Score(me, baby wipes) = 1/2[S(wipes, diapers) + S(wipes, milk)]
+Cons: does not utilize
+•	context: e.g. time of day
+•	user features: e.g. age
+•	product features: e.g. baby vs electronics; no correlation
+•	Cold start problem: what if this is a new product how to form recomm?
+
+4.	Matrix factorization
+In this model, a matrix is built with user vs movie rating to predict unknown user-movie combinations first, later the score of this product can be taken as estimated rating|movie,user of an unknown movie. 
+1.	Recommendations from known user/item features: Rating(u,v)
+2.	Predictions in matrix form: < Lu,Rv>
+3.	Discovering hidden structure by matrix factorization: RSS(L,R) = SUM[(Rating(u,v) - <Lu,Rv>)^2]
+
+Cons:
+This model cannot handle new user or movie
+Solution –
+Use balance of features (capture context)
+Matrix factorization (group of users)
+New user – initially use features only, later once we get data from user, use matrix factorization
+User specified, feature based model with our learned features from our matrix factorization and switch between the both.
+A performance metric for recommender systems
+Don't want to use classification accuracy (liked vs not liked)
+•	not interested in what a person does not like
+•	want to quickly discover relatively few liked items
+•	^ imbalanced class problem
+Users have short attention span, so we want to recommend fewer items
+•	higher cost to missing liked item
+accuracy = # liked/# not liked
+Recall = (# liked & shown) / (# liked)
+Precision = (# liked & shown) / (# shown)
+We maximize recall. 
+How many of my liked items were recommended to me? All of them?? Then precision is low.
+Optimal Recommender:
+Precision= recall =1
+Precision-recall curves
+•	Input: specific recommender system
+•	Ouput: algoritm-specific precision-recall curve
+A possible metric is AUC (Area under Curve) should be max.
